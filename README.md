@@ -47,23 +47,3 @@ Expected ending:
 
 `PASS: forwarding + load-use stall + memory path verified`
 
-## Interview-level explanation
-
-**Why five stages?**
-"I split instruction execution into IF, ID, EX, MEM and WB so multiple instructions can be in flight simultaneously."
-
-**Why forwarding?**
-"A dependent instruction may need a result before it reaches WB. Instead of waiting, I forward the newer result from a later pipeline stage directly to the EX inputs."
-
-**Why a stall is still needed?**
-"For a load-use dependency, the loaded value is only available after MEM, so forwarding cannot provide it soon enough for the immediately following EX stage. I insert one bubble and hold IF/ID for one cycle."
-
-**What is the memory interface?**
-"The CPU exposes instruction-memory and data-memory signals: address, read/write enable and write data, while the testbench supplies the memory contents."
-
-**How did you verify it?**
-"I ran representative instructions including dependent arithmetic, store/load and a load-use dependency, then checked the results and inspected the pipeline signals in GTKWave."
-
-## Important honesty point
-
-If asked whether this is a complete RV32I implementation, say: "It implements the core RV32I subset needed for the project demonstration; it does not implement every RV32I instruction." Do not claim full ISA coverage.
