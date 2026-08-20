@@ -1,6 +1,4 @@
-# Barebones 5-Stage Pipelined RV32I CPU
-
-This is a deliberately simplified interview/demo version of the original project. It keeps only what is needed to explain the resume bullets clearly.
+5-Stage Pipelined RV32I CPU
 
 ## Architecture
 
@@ -18,8 +16,6 @@ Five stages:
 - LW
 - SW
 - BEQ
-
-This is a practical RV32I subset, not the full ISA.
 
 ## Hazards
 
